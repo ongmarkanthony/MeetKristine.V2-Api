@@ -16,15 +16,14 @@ return new class extends Migration
         Schema::create('employee_salary', function (Blueprint $table) {
             $table->id();
             $table->integer('salary_amount');
-            $table->enum('pay_schedule',['monthly', 'semi-monthly']);
+            $table->enum('pay_schedule', ['monthly', 'semi-monthly']);
             $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('jobTitle_id');
             $table->unsignedBigInteger('department_id');
             $table->timestamps();
-
-            $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('jobTitle_id')->references('id')->on('employees');
-            $table->foreign('department_id')->references('id')->on('employees');
+            $table->foreign('employee_id')->references('id')->on('users');
+            $table->foreign('jobTitle_id')->references('id')->on('users');
+            $table->foreign('department_id')->references('id')->on('users');
         });
     }
 
