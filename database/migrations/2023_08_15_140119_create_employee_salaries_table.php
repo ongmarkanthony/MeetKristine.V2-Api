@@ -11,9 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up() 
+    public function up()
     {
-        Schema::create('employee_salary', function (Blueprint $table) {
+        Schema::create('employee_salaries', function (Blueprint $table) {
             $table->id();
             $table->integer('salary_amount');
             $table->enum('pay_schedule',['monthly', 'semi-monthly']);
@@ -33,8 +33,8 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down() 
+    public function down()
     {
-        Schema::dropIfExists('employee_salary');
+        Schema::dropIfExists('employee_salaries');
     }
 };
