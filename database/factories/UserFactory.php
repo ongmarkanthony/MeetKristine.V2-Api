@@ -18,9 +18,27 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'userRole' => fake()->randomElement(['admin', 'user']),
+            'employee_id' => 'MK-' . fake()->unique()->randomNumber(4, true),
+            'email' => fake()->unique()->firstName . '@meetkristine.com',
+            'firstName' => fake()->firstName,
+            'lastName' => fake()->lastName,
+            'jobTitle' => fake()->randomElement(['IT Manager', 'HR Manager', 'Accounting Head', 'Finance Head', 'Marketing', 'Sales Director']),
+            'department' => fake()->randomElement(['Admin', 'HR', 'Accounting', 'Finance', 'Marketing', 'Sales']),
+            'dateHired' => fake()->dateTimeThisDecade(),
+            'dateOfBirth' => fake()->dateTimeThisDecade('-10 years'),
+            'gender' => fake()->randomElement(['male', 'female']),
+            'address1' => fake()->address,
+            'address2' => fake()->secondaryAddress(),
+            'city' => fake()->randomElement(['Makati City', 'Taguig City', 'Quezon City', 'Pasay City', 'City of Manila', 'Caloocan', 'Malabon City', 'Mandaluyong', 'Muntinlupa', 'Navotas', 'Paranaque', 'Pasay', 'San Juan']),
+            'country' => fake()->randomElement(['Philippines', 'United States of America', 'Hong Kong']),
+            'postalCode' => fake()->postcode,
+            'sssNumber' => 'SSS-' . fake()->randomNumber(9, true),
+            'philNumber' => 'PHIL-' . fake()->randomNumber(9, true),
+            'tinNumber' => 'TIN-' . fake()->randomNumber(9, true),
+            'hdmfNumber' => 'HDMF-' . fake()->randomNumber(9, true),
+            'bankName' => fake()->randomElement(['BPI', 'UNIONBANK', 'BDO', 'Metrobank']),
+            'bankAccount' => 'MK-' . fake()->randomNumber(9, true),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
