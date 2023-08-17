@@ -41,4 +41,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userSalary(){
+        return $this->belongsTo(UserSalary::class);
+    }
+
+    public function leaveTypes() {
+        return $this->hasMany(LeaveType::class);
+    }
+
+    public function leaveRequests() {
+        return $this->hasMany(LeaveRequest::class);
+    }
 }

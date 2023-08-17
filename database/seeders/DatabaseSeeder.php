@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\LeaveRequest;
+use App\Models\LeaveType;
+use App\Models\User;
+use App\Models\UserSalary;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(100)->create();
+        User::factory(10)->create();
+
+        UserSalary::factory(10)->create();
+
+        LeaveType::factory(10)->create();
+        
+        LeaveRequest::factory(10)->create();
     }
 }

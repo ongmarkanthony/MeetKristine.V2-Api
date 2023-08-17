@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('leave_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->enum('name',['personal','sick','emergency','parental']);
             $table->float('available_credit', 5,2);
             $table->timestamps();
         });

@@ -13,18 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('leave_request', function (Blueprint $table) {
+        Schema::create('leave_requests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('leave_type_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('leave_types_id');
             $table->enum('status',['approved','rejected', 'pending']);
             $table->date('request_date');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
 
-            $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('leave_type_id')->references('id')->on('leave_type');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('leave_types_id')->references('id')->on('leave_types');
         });
     }
 
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leave_request');
+        Schema::dropIfExists('leave_requests');
     }
 };

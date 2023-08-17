@@ -9,7 +9,7 @@ class LeaveType extends Model
 {
     use HasFactory;
 
-    public function employees() {
-        return $this->hasMany(Employee::class);
+    public function users() {
+        return $this->hasMany(User::class);
     }
 }
