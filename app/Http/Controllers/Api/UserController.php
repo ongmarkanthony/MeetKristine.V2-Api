@@ -56,7 +56,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
-        return $user;
+        return UserResource::make($user);
     }
 
     /**
