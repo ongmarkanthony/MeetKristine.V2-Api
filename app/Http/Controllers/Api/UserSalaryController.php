@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserSalaryStoreRequest;
+use App\Http\Requests\UserSalaryUpdateRequest;
 use App\Http\Resources\UserSalaryResource;
 use App\Models\UserSalary;
 use Illuminate\Http\Request;
@@ -36,9 +38,16 @@ class UserSalaryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserSalaryStoreRequest $request)
     {
         //
+        return UserSalaryResource::make(
+            UserSalary::create([
+                'salary_amount'=>$request->salary_amount,
+                'pay_schedule'=>$request->pay_schedule,
+                'user_id'=>$request->user_id
+            ])
+            );
     }
 
     /**
@@ -71,9 +80,22 @@ class UserSalaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserSalaryUpdateRequest $request, UserSalary $userSalary)
     {
         //
+        if (isset($request->salary_amount)) {
+            $userSalary->salary_amount = $request->salary_amount;
+        }
+        if (isset($request->pay_schedule)) {
+            $userSalary->pay_schedule = $request->pay_schedule;
+        }
+        if (isset($request->user_id)) {
+            $userSalary->user_id = $request->user_id;
+        }
+
+        $userSalary->save();
+
+        return UserSalaryResource::make($userSalary);
     }
 
     /**
@@ -82,8 +104,13 @@ class UserSalaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserSalary $userSalary)
     {
         //
+        $userSalary->delete();
+        return response()->json([
+            'success'=>true,
+            'message'=>'Successfully deleted'
+        ]);
     }
 }
