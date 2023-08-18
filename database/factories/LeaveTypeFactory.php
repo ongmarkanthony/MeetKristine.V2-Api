@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class LeaveTypeFactory extends Factory
             'available_credit'=>fake()->numberBetween(1,15),
             'updated_at'=>fake()->dateTime(),
             'created_at'=>fake()->dateTime(),
+            'user_id'=>User::factory()
 
         ];
     }

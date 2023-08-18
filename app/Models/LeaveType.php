@@ -9,6 +9,12 @@ class LeaveType extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'available_credit',
+        'user_id'
+    ];
+
     public function users() {
         return $this->hasMany(User::class);
     }
