@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'address1' => fake()->address,
             'address2' => fake()->secondaryAddress(),
             'city' => fake()->randomElement(['Makati City', 'Taguig City', 'Quezon City', 'Pasay City', 'City of Manila', 'Caloocan', 'Malabon City', 'Mandaluyong', 'Muntinlupa', 'Navotas', 'Paranaque', 'Pasay', 'San Juan']),
-            'country' => fake()->randomElement(['Philippines', 'United States of America', 'Hong Kong']),
+            'country' => fake()->randomElement(['Philippines', 'United States', 'Hong Kong']),
             'postalCode' => fake()->postcode,
             'sssNumber' => 'SSS-' . fake()->randomNumber(9, true),
             'philNumber' => 'PHIL-' . fake()->randomNumber(9, true),
@@ -53,6 +53,6 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
-            ]);
-        }
+        ]);
+    }
 }
