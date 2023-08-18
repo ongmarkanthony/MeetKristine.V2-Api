@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -76,9 +77,46 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, User $user)
     {
         //
+        if (isset($request->password)) {
+            $user->password = $request->password;
+        }
+        if (isset($request->email)) {
+            $user->email = $request->email;
+        }
+        if (isset($request->firstName)) {
+            $user->firstName = $request->firstName;
+        }
+        if (isset($request->lastName)) {
+            $user->lastName = $request->lastName;
+        }
+        if (isset($request->address1)) {
+            $user->address1 = $request->address1;
+        }
+        if (isset($request->address2)) {
+            $user->address2 = $request->address2;
+        }
+        if (isset($request->city)) {
+            $user->city = $request->city;
+        }
+        if (isset($request->country)) {
+            $user->country = $request->country;
+        }
+        if (isset($request->postalCode)) {
+            $user->postalCode = $request->postalCode;
+        }
+        if (isset($request->bankName)) {
+            $user->bankName = $request->bankName;
+        }
+        if (isset($request->bankAccount)) {
+            $user->bankAccount = $request->bankAccount;
+        }
+
+        $user->save();
+
+        return UserResource::make($user);
     }
 
     /**
@@ -87,8 +125,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
+        $user->delete();
+        return response()->json([
+            'success'=>true,
+            'message'=>'Successfully deleted'
+        ]);
     }
 }

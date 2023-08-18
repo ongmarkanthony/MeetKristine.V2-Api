@@ -19,7 +19,7 @@ class UserSalaryFactory extends Factory
     {
         return [
             //
-            'salary_amount'=>fake()->randomNumber(6,true),
+            'salary_amount'=>fake()->randomNumber(5,true),
             'pay_schedule'=>fake()->randomElement(['monthly','semi-monthly']),
             'user_id'=>User::factory()
         ];
