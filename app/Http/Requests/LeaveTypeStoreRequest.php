@@ -13,7 +13,7 @@ class LeaveTypeStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,9 @@ class LeaveTypeStoreRequest extends FormRequest
     {
         return [
             //
+            'name'=> 'required',
+            'available_credit'=>'required',
+            'user_id'=>'required'
         ];
     }
 }

@@ -15,6 +15,7 @@ class UserSalaryResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id'=>$this->id,
             'salary_amount'=>$this->salary_amount,
             'pay_schedule'=>$this->pay_schedule,
             'user_id'=>$this->user_id,

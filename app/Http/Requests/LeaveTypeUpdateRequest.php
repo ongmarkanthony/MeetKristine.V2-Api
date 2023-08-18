@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class LeaveTypeUpdateRequest extends FormRequest
 {
@@ -25,6 +27,18 @@ class LeaveTypeUpdateRequest extends FormRequest
     {
         return [
             //
+            'name'=>'sometimes|required',
+            'available_credit'=>'sometimes|required',
+            'user_id'=>'sometimes|required|exists:users,id'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success'=>false,
+            'message'=>'Validation error',
+            'data'=>$validator->errors()
+        ]));
     }
 }

@@ -29,7 +29,7 @@ class UserSalaryUpdateRequest extends FormRequest
             //
             'salary_amount'=>'sometimes|required|min:5',
             'pay_schedule'=>'sometimes|required',
-            'user_id'=>'sometimes|required',
+            'user_id'=>'sometimes|required|exists:users,id',
         ];
     }
 
