@@ -14,10 +14,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return UserResource::collection(User::paginate(10));
+        $query = User::query();
+
+        if(isset($request->jobTitle)) {
+            $query->where('jobTitle',$request->jobTitle);
+        }
+        if(isset($request->department)) {
+            $query->where('department',$request->department);
+        }
+        if(isset($request->gender)) {
+            $query->where('gender',$request->gender);
+        }
+        return UserResource::collection($query->get());
     }
 
     /**
