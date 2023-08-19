@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('leave_types', function (Blueprint $table) {
-            //
-            $table->unsignedBigInteger('user_id');
-
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::create('requests', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('leave_id')->constrained();
+            $table->date('requested_date');
+            $table->string('type');
+            $table->timestamps();
         });
     }
 
@@ -28,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('leave_types', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('requests');
     }
 };

@@ -19,12 +19,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
-
-        UserSalary::factory(10)->create();
-
-        LeaveType::factory(10)->create();
-        
-        LeaveRequest::factory(10)->create();
+        User::factory()->create([
+            'username'=>'admin-user',
+            'role'=>'admin'
+        ]);
+        User::factory(20)->create();
     }
 }

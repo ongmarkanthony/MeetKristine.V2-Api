@@ -18,9 +18,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'userRole' => fake()->randomElement(['admin', 'user']),
-            'employee_id' => 'MK-' . fake()->unique()->randomNumber(4, true),
+            'username' => fake()->unique()->userName(),
+            'employee_num' => 'MK-' . fake()->unique()->randomNumber(4, true),
             'email' => fake()->unique()->firstName . '@meetkristine.com',
+            'password'=>fake()->password(),
             'firstName' => fake()->firstName,
             'lastName' => fake()->lastName,
             'jobTitle' => fake()->randomElement(['IT Manager', 'HR Manager', 'Accounting Head', 'Finance Head', 'Marketing', 'Sales Director']),
@@ -39,7 +40,6 @@ class UserFactory extends Factory
             'hdmfNumber' => 'HDMF-' . fake()->randomNumber(9, true),
             'bankName' => fake()->randomElement(['BPI', 'UNIONBANK', 'BDO', 'Metrobank']),
             'bankAccount' => 'MK-' . fake()->randomNumber(9, true),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
     }

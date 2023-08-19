@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_salaries', function (Blueprint $table) {
+        Schema::create('leaves', function (Blueprint $table) {
             $table->id();
-            $table->integer('salary_amount');
-            $table->enum('pay_schedule', ['monthly', 'semi-monthly']);
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained();
+            $table->string('name');
+            $table->string('credit_needed');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_salaries');
+        Schema::dropIfExists('leaves');
     }
 };

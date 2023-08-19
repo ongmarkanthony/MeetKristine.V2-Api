@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('leave_types', function (Blueprint $table) {
+        Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->enum('name',['personal','sick','emergency','parental']);
-            $table->float('available_credit', 5,2);
+            $table->foreignId('user_id')->constrained();
+            $table->string('pay_schedule');
+            $table->integer('incentives');
+            $table->integer('salary_amount');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leave_types');
+        Schema::dropIfExists('salaries');
     }
 };
