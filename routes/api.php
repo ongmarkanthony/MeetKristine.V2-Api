@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\LeaveRequestController;
-use App\Http\Controllers\Api\LeaveTypeController;
+use App\Http\Controllers\Api\LeaveController;
+use App\Http\Controllers\Api\RequestController;
+use App\Http\Controllers\Api\SalaryController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\UserSalaryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('users', UserController::class);
-    Route::apiResource('salaries',UserSalaryController::class);
-    Route::apiResource('leavetypes',LeaveTypeController::class);
-    Route::apiResource('leave-requests',LeaveRequestController::class);
+    Route::apiResource('leaves', LeaveController::class);
+    Route::apiResource('requests', RequestController::class);
+    Route::apiResource('salaries', SalaryController::class);
 });
