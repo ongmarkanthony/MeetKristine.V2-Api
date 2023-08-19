@@ -40,6 +40,7 @@ class UserFactory extends Factory
             'hdmfNumber' => 'HDMF-' . fake()->randomNumber(9, true),
             'bankName' => fake()->randomElement(['BPI', 'UNIONBANK', 'BDO', 'Metrobank']),
             'bankAccount' => 'MK-' . fake()->randomNumber(9, true),
+            'accrual'=>fake()->numberBetween(1,15),
             'remember_token' => Str::random(10),
         ];
     }

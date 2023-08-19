@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function leaves() {
+        return $this->hasMany(Leave::class);
+    }
+
+    public function requests() {
+        return $this->hasMany(Leave::class);
+    }
+
+    public function salaries() {
+        return $this->hasMany(Salary::class);
+    }
+
 }

@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\LeaveRequest;
-use App\Models\LeaveType;
+use App\Models\Leave;
+use App\Models\Request;
+use App\Models\Salary;
 use App\Models\User;
-use App\Models\UserSalary;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
             'username'=>'admin-user',
             'role'=>'admin'
         ]);
-        User::factory(20)->create();
+        User::factory(20)
+            ->has(Leave::factory(3)
+                ->has(Request::factory(5)))
+            ->has(Salary::factory())
+            ->create();
     }
 }
