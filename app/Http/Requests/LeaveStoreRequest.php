@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UserUpdateRequest extends FormRequest
+class LeaveStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,21 +26,10 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            // 
-            'username'=>'required|unique:users',
-            'employee_num'=>'sometimes|required|unique:users',
-            'password'=>'sometimes|required|min:8',
-            'email'=>'sometimes|required|unique:users',
-            'firstName'=>'sometimes|required',
-            'lastName'=>'sometimes|required',
-            'jobTitle'=>'sometimes|required',
-            'department'=>'sometimes|required',
-            'gender'=>'sometimes|required',
-            'address1'=>'sometimes|required',
-            'address2'=>'sometimes|required',
-            'city'=>'sometimes|required',
-            'country'=>'sometimes|required',
-            'accrual'=>'sometimes|required',
+            //
+            'user_id'=>'required|exists:users,id',
+            'name'=>'required',
+            'credit_needed'=>'required'
         ];
     }
 

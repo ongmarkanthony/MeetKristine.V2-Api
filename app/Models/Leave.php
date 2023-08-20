@@ -9,6 +9,12 @@ class Leave extends Model
 {
     use HasFactory;
 
+    protected $fillable =[
+        'user_id',
+        'name',
+        'credit_needed',
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }

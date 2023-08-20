@@ -30,6 +30,8 @@ class UserResource extends JsonResource
             'address2'=>$this->address2,
             'city'=>$this->city,
             'country'=>$this->country,
+            'accrual'=>$this->accrual,
+
         ];
     }
 }

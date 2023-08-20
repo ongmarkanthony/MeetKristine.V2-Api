@@ -5,8 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use PhpParser\Node\Expr\FuncCall;
 
-class UserUpdateRequest extends FormRequest
+class LeaveUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,21 +27,10 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            // 
-            'username'=>'required|unique:users',
-            'employee_num'=>'sometimes|required|unique:users',
-            'password'=>'sometimes|required|min:8',
-            'email'=>'sometimes|required|unique:users',
-            'firstName'=>'sometimes|required',
-            'lastName'=>'sometimes|required',
-            'jobTitle'=>'sometimes|required',
-            'department'=>'sometimes|required',
-            'gender'=>'sometimes|required',
-            'address1'=>'sometimes|required',
-            'address2'=>'sometimes|required',
-            'city'=>'sometimes|required',
-            'country'=>'sometimes|required',
-            'accrual'=>'sometimes|required',
+            //
+            'user_id'=>'sometimes|required|exists:users,id',
+            'name'=>'sometimes|required',
+            'credit_needed'=>'sometimes|required'
         ];
     }
 

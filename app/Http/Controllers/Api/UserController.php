@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -47,9 +49,38 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
         //
+        return User::create([
+            'username'=>$request->username,
+            'employee_num'=>$request->employee_num,
+            'password'=>$request->password,
+            'email'=>$request->email,
+            'firstName'=>$request->firstName,
+            'lastName'=>$request->lastName,
+            'jobTitle'=>$request->jobTitle,
+            'department'=>$request->department,
+            'dateHired'=>$request->dateHired,
+            'dateOfBirth'=>$request->dateOfBirth,
+            'gender'=>$request->gender,
+            'address1'=>$request->address1,
+            'address2'=>$request->address2,
+            'city'=>$request->city,
+            'country'=>$request->country,
+            'postalCode'=>$request->postalCode,
+            'sssNumber'=>$request->sssNumber,
+            'philNumber'=>$request->philNumber,
+            'tinNumber'=>$request->country,
+            'hdmfNumber'=>$request->hdmfNumber,
+            'country'=>$request->country,
+            'bankName'=>$request->bankName,
+            'bankAccount'=>$request->bankAccount,
+            'country'=>$request->country,
+            'accrual'=>$request->accrual,
+
+
+        ]);
     }
 
     /**
@@ -82,9 +113,58 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, User $user)
     {
         //
+        if (isset($request->username)) {
+            $user->username = $request->username;
+        }
+        if (isset($request->employee_num)) {
+            $user->employee_num = $request->employee_num;
+        }
+        if (isset($request->password)) {
+            $user->password = $request->password;
+        }
+        if (isset($request->email)) {
+            $user->email = $request->email;
+        }
+        if (isset($request->firstName)) {
+            $user->firstName = $request->firstName;
+        }
+        if (isset($request->lastName)) {
+            $user->lastName = $request->lastName;
+        }
+        if (isset($request->jobTitle)) {
+            $user->jobTitle = $request->jobTitle;
+        }
+        if (isset($request->department)) {
+            $user->department = $request->department;
+        }
+        if (isset($request->gender)) {
+            $user->gender = $request->gender;
+        }
+        if (isset($request->dateOfBirth)) {
+            $user->dateOfBirth = $request->dateOfBirth;
+        }
+        if (isset($request->address1)) {
+            $user->address1 = $request->address1;
+        }
+        if (isset($request->address2)) {
+            $user->address2 = $request->address2;
+        }
+        if (isset($request->city)) {
+            $user->city = $request->city;
+        }
+        if (isset($request->country)) {
+            $user->country = $request->country;
+        }
+        if (isset($request->accrual)) {
+            $user->accrual = $request->accrual;
+        }
+
+        $user->save();
+
+        return UserResource::make($user);
     }
 
     /**
@@ -93,8 +173,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
+        $user->delete();
+
+        return response()->json([
+            'success'=>true,
+            'message'=>'Successfully deleted',
+        ]);
+        
     }
 }
