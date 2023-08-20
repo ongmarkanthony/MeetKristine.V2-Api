@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LeaveStoreRequest;
-use App\Http\Requests\LeaveUpdateRequest;
-use App\Http\Resources\LeaveResource;
-use App\Models\Leave;
+use App\Http\Requests\LeaveCreditStoreRequest;
+use App\Http\Requests\LeaveCreditUpdateRequest;
+use App\Http\Resources\LeaveCreditResource;
+use App\Models\LeaveCredit;
 use Illuminate\Http\Request;
 
-class LeaveController extends Controller
+class LeaveCreditController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,17 +19,7 @@ class LeaveController extends Controller
     public function index()
     {
         //
-        return LeaveResource::collection(Leave::paginate(10));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return LeaveCreditResource::collection(LeaveCredit::paginate(10));
     }
 
     /**
@@ -38,10 +28,10 @@ class LeaveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LeaveStoreRequest $request)
+    public function store(LeaveCreditStoreRequest $request)
     {
         //
-        return Leave::create([
+        return LeaveCredit::create([
             'user_id'=>$request->user_id,
             'name'=>$request->name,
             'credit_needed'=>$request->credit_needed,
@@ -54,21 +44,9 @@ class LeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Leave $leave)
+    public function show(LeaveCredit $leaveCredit)
     {
-        //
-        return $leave;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $leaveCredit;
     }
 
     /**
@@ -78,22 +56,17 @@ class LeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LeaveUpdateRequest $request, Leave $leave)
+    public function update(LeaveCreditUpdateRequest $request, LeaveCredit $leaveCredit)
     {
         //
 
-        if (isset($request->user_id)) {
-            $leave->user_id = $request->user_id;
-        }
         if (isset($request->name)) {
-            $leave->name = $request->name;
+            $leaveCredit->name = $request->name;
         }
-        if (isset($request->credit_needed)) {
-            $leave->credit_needed = $request->credit_needed;
-        }
+      
 
-        $leave->save();
-        return LeaveResource::make($leave);
+        $leaveCredit->save();
+        return LeaveCreditResource::make($leaveCredit);
     }
 
     /**
@@ -102,10 +75,10 @@ class LeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Leave $leave)
+    public function destroy(LeaveCredit $leaveCredit)
     {
         //
-        $leave->delete();
+        $leaveCredit->delete();
         return response()->json([
             'success'=>true,
             'message'=>'Successfully deleted'

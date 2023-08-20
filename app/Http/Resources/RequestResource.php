@@ -17,7 +17,7 @@ class RequestResource extends JsonResource
         return [
             'id'=>$this->id,
             'userId'=>$this->user_id,
-            'leaveId'=>$this->leave_id,
+            'leaveCreditId'=>$this->leave_credit_id,
             'requestedDate'=>$this->requested_date,
             'type'=>$this->type,
         ];

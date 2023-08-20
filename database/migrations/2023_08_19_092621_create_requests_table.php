@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('leave_id')->constrained();
+            $table->foreignId('leave_credit_id')->constrained();
             $table->date('requested_date');
             $table->string('type');
             $table->timestamps();

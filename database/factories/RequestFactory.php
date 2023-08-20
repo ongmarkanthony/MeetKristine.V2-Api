@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Leave;
+use App\Models\LeaveCredit;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,7 +21,7 @@ class RequestFactory extends Factory
         return [
             //
             'user_id'=>User::factory(),
-            'leave_id'=>Leave::factory(),
+            'leave_credit_id'=>LeaveCredit::factory(),
             'requested_date'=>fake()->date(),
             'type'=>fake()->randomElement(['paid','unpaid'])
         ];
