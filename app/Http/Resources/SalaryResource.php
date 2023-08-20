@@ -16,10 +16,10 @@ class SalaryResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'userId'=>$this->user_id,
-            'paySchedule'=>$this->pay_schedule,
+            'user_id'=>$this->user_id,
+            'pay_schedule'=>$this->pay_schedule,
             'incentives'=>$this->incentives,
-            'salaryAmount'=>$this->salary_amount,
+            'salary_amount'=>$this->salary_amount,
         ];
     }
 }

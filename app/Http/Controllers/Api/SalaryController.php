@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SalaryStoreRequest;
+use App\Http\Requests\SalaryUpdateRequest;
 use App\Http\Resources\SalaryResource;
 use App\Models\Salary;
 use Illuminate\Http\Request;
@@ -37,10 +39,15 @@ class SalaryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( $request)
+    public function store(SalaryStoreRequest $request)
     {
         //
-        return ;
+        return Salary::create([
+            'user_id'=>$request->user_id,
+            'pay_schedule'=>$request->pay_schedule,
+            'incentives'=>$request->incentives,
+            'salary_amount'=>$request->salary_amount,
+        ]) ;
     }
 
     /**
@@ -73,9 +80,25 @@ class SalaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SalaryUpdateRequest $request, Salary $salary)
     {
         //
+        if (isset($request->user_id)) {
+            $salary->user_id = $request->user_id;
+        }
+        if (isset($request->pay_schedule)) {
+            $salary->pay_schedule = $request->pay_schedule;
+        }
+        if (isset($request->incentives)) {
+            $salary->incentives = $request->incentives;
+        }
+        if (isset($request->salary_amount)) {
+            $salary->salary_amount = $request->salary_amount;
+        }
+
+        $salary->save();
+
+        return SalaryResource::make($salary);
     }
 
     /**
@@ -84,8 +107,14 @@ class SalaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Salary $salary)
     {
         //
+        $salary->delete();
+
+        return response()->json([
+            'success'=>true,
+            'message'=>'Successfully deleted'
+        ]);
     }
 }
