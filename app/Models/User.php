@@ -66,8 +66,8 @@ class User extends Authenticatable
         return $this->hasMany(LeaveCredit::class);
     }
 
-    public function requests() {
-        return $this->hasMany(Request::class);
+    public function leaveProposals() {
+        return $this->hasMany(LeaveProposal::class);
     }
 
     public function salaries() {
