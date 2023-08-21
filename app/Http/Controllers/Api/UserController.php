@@ -30,6 +30,8 @@ class UserController extends Controller
         if(isset($request->gender)) {
             $query->where('gender',$request->gender);
         }
+        
+        $query->simplePaginate(10);
         return UserResource::collection($query->get());
     }
 
