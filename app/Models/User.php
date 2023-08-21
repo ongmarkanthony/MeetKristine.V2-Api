@@ -41,6 +41,9 @@ class User extends Authenticatable
         'bankName',
         'bankAccount',
         'accrual',
+        'sl_credits',
+        'vl_credits',
+        'el_credits',
     ];
 
     /**
@@ -62,9 +65,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function leaveCredits() {
-        return $this->hasMany(LeaveCredit::class);
-    }
 
     public function leaveProposals() {
         return $this->hasMany(LeaveProposal::class);

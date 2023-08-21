@@ -31,6 +31,7 @@ class LeaveProposalUpdateRequest extends FormRequest
             'leave_credit_id'=>'sometimes|required|exists:leave_credits,id',
             'requested_date'=>'sometimes|required',
             'type'=>'sometimes|required',
+            'leave_type'=>'sometimes|required',
         ];
     }
 

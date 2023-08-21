@@ -40,7 +40,10 @@ class UserUpdateRequest extends FormRequest
             'address2'=>'sometimes|required',
             'city'=>'sometimes|required',
             'country'=>'sometimes|required',
-            'accrual'=>'sometimes|required',
+            'accrual'=>'sometimes|required',            
+            'sl_credits'=>'sometimes|required',
+            'vl_credits'=>'sometimes|required',
+            'el_credits'=>'sometimes|required',
         ];
     }
 

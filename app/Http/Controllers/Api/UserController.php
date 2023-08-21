@@ -78,6 +78,9 @@ class UserController extends Controller
             'bankAccount'=>$request->bankAccount,
             'country'=>$request->country,
             'accrual'=>$request->accrual,
+            'sl_credits'=>$request->sl_credits,
+            'vl_credits'=>$request->vl_credits,
+            'el_credits'=>$request->el_credits,
 
 
         ]);
@@ -160,6 +163,15 @@ class UserController extends Controller
         }
         if (isset($request->accrual)) {
             $user->accrual = $request->accrual;
+        }
+        if (isset($request->sl_credits)) {
+            $user->sl_credits = $request->sl_credits;
+        }
+        if (isset($request->vl_credits)) {
+            $user->vl_credits = $request->vl_credits;
+        }
+        if (isset($request->el_credits)) {
+            $user->el_credits = $request->el_credits;
         }
 
         $user->save();

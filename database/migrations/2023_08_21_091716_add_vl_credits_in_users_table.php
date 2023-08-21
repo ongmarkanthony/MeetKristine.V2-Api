@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('leave_proposals', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->date('requested_date');
-            $table->string('type');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->integer('vl_credits');
         });
     }
 
@@ -29,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leave_proposals');
+        Schema::table('users', function (Blueprint $table) {
+            //
+            Schema::dropIfExists('vl_credits');
+        });
     }
 };

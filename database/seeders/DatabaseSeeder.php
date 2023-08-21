@@ -24,9 +24,10 @@ class DatabaseSeeder extends Seeder
             'role'=>'admin'
         ]);
         User::factory(20)
-            ->has(LeaveCredit::factory(3)
-                ->has(LeaveProposal::factory(5)))
+            ->has(LeaveProposal::factory(5))
             ->has(Salary::factory())
             ->create();
+
+        // Salary::factory(20)->create();
     }
 }

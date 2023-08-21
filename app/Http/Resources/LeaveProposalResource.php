@@ -17,9 +17,9 @@ class LeaveProposalResource extends JsonResource
         return [
             'id'=>$this->id,
             'user_id'=>$this->user_id,
-            'leave_credit_id'=>$this->leave_credit_id,
             'requested_date'=>$this->requested_date,
             'type'=>$this->type,
+            'leave_type'=>$this->leave_type,
         ];
     }
 }

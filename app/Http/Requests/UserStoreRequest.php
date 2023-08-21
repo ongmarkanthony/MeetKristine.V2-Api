@@ -50,6 +50,9 @@ class UserStoreRequest extends FormRequest
             'bankName'=>'required',
             'bankAccount'=>'required',
             'accrual'=>'required',
+            'sl_credits'=>'required',
+            'vl_credits'=>'required',
+            'el_credits'=>'required',
         ];
     }
 

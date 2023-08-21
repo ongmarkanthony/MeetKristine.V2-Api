@@ -43,7 +43,7 @@ class LeaveProposalController extends Controller
         //
         return LeaveProposal::create([
             'user_id'=>$request->user_id,
-            'leave_credit_id'=>$request->leave_credit_id,
+            'leave_type'=>$request->leave_type,
             'requested_date'=>$request->requested_date,
             'type'=>$request->type
         ]);
@@ -88,8 +88,8 @@ class LeaveProposalController extends Controller
         if (isset($request->requested_date)) {
             $leaveProposal->requested_date = $request->requested_date;
         }
-        if (isset($request->leave_credit_id)) {
-            $leaveProposal->leave_credit_id = $request->leave_credit_id;
+        if (isset($request->leave_type)) {
+            $leaveProposal->leave_type = $request->leave_type;
         }
         if (isset($request->type)) {
             $leaveProposal->type = $request->type;

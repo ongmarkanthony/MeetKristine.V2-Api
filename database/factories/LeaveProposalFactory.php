@@ -21,9 +21,9 @@ class LeaveProposalFactory extends Factory
         return [
             //
             'user_id'=>User::factory(),
-            'leave_credit_id'=>LeaveCredit::factory(),
             'requested_date'=>fake()->date(),
-            'type'=>fake()->randomElement(['paid','unpaid'])
+            'type'=>fake()->randomElement(['paid','unpaid']),
+            'leave_type'=>fake()->randomElement(['sick','emergency','vacation','maternity'])
         ];
     }
 }

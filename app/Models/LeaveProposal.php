@@ -11,18 +11,16 @@ class LeaveProposal extends Model
 
     protected $fillable = [
         'user_id',
-        'leave_credit_id',
         'requested_date',
         'type',
+        'leave_type'
     ];
 
     public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function leaveCredit() {
-        return $this->belongsTo(LeaveCredit::class);
-    }
+   
 
     
 }

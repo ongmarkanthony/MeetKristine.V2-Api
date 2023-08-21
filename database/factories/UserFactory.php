@@ -41,6 +41,9 @@ class UserFactory extends Factory
             'bankName' => fake()->randomElement(['BPI', 'UNIONBANK', 'BDO', 'Metrobank']),
             'bankAccount' => 'MK-' . fake()->randomNumber(9, true),
             'accrual'=>fake()->numberBetween(1,15),
+            'sl_credits'=>fake()->randomDigit(),
+            'vl_credits'=>fake()->randomDigit(),
+            'el_credits'=>fake()->randomDigit(),
             'remember_token' => Str::random(10),
         ];
     }
