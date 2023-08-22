@@ -8,6 +8,7 @@ use App\Http\Requests\LeaveProposalUpdateRequest;
 use App\Http\Resources\LeaveProposalResource;
 use App\Models\LeaveProposal;
 use App\Models\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveProposalController extends Controller
 {
@@ -41,8 +42,10 @@ class LeaveProposalController extends Controller
     public function store(LeaveProposalStoreRequest $request)
     {
         //
+        $user = Auth::user();
+
         return LeaveProposal::create([
-            'user_id' => $request->user_id,
+            'user_id' => $user->id,
             'leave_type' => $request->leave_type,
             'requested_date' => $request->requested_date,
             'type' => $request->type
@@ -82,9 +85,6 @@ class LeaveProposalController extends Controller
     public function update(LeaveProposalUpdateRequest $request, LeaveProposal $leaveProposal)
     {
         //
-        if (isset($request->user_id)) {
-            $leaveProposal->user_id = $request->user_id;
-        }
         if (isset($request->requested_date)) {
             $leaveProposal->requested_date = $request->requested_date;
         }

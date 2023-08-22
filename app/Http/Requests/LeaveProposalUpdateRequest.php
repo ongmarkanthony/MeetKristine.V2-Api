@@ -27,7 +27,6 @@ class LeaveProposalUpdateRequest extends FormRequest
     {
         return [
             //
-            'user_id'=>'sometimes|required|exists:users,id',
             'leave_credit_id'=>'sometimes|required|exists:leave_credits,id',
             'requested_date'=>'sometimes|required',
             'type'=>'sometimes|required',

@@ -27,7 +27,6 @@ class LeaveProposalStoreRequest extends FormRequest
     {
         return [
             //
-            'user_id'=>'required|exists:users,id',
             'leave_credit_id'=>'required|exists:leave_credits,id',
             'requested_date'=>'required',
             'type'=>'required',
