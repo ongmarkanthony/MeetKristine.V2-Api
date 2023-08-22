@@ -74,9 +74,6 @@ class User extends Authenticatable
         return $this->hasMany(LeaveProposal::class);
     }
 
-    public function salary() {
-        return $this->hasOne(Salary::class);
-    }
 
     public function timeEvent(){
         return $this->hasOne(TimeEvent::class);
