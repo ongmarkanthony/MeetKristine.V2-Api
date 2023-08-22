@@ -27,8 +27,7 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             // 
-<<<<<<< HEAD
-            'username' => 'required|unique:users' . $this->route('user'),
+            'username' => 'required|unique:users',
             'employee_num' => 'sometimes|required|unique:users' . $this->route('user'),
             'password' => 'sometimes|required|min:8',
             'email' => 'sometimes|required|unique:users' . $this->route('user'),
@@ -49,28 +48,6 @@ class UserUpdateRequest extends FormRequest
             'incentives' => 'sometimes',
             'pay_schedule' => 'sometimes',
             'thumbnail' => 'sometimes',
-=======
-            'username'=>'required|unique:users',
-            'employee_num'=>'sometimes|required|unique:users',
-            'password'=>'sometimes|required|min:8',
-            'email'=>'sometimes|required|unique:users',
-            'firstName'=>'sometimes|required',
-            'lastName'=>'sometimes|required',
-            'jobTitle'=>'sometimes|required',
-            'department'=>'sometimes|required',
-            'gender'=>'sometimes|required',
-            'address1'=>'sometimes|required',
-            'address2'=>'sometimes|required',
-            'city'=>'sometimes|required',
-            'country'=>'sometimes|required',
-            'accrual'=>'sometimes|required',            
-            'sl_credits'=>'sometimes|required',
-            'vl_credits'=>'sometimes|required',
-            'el_credits'=>'sometimes|required',
-            'salary_amount'=>'sometimes|required',
-            'incentives'=>'sometimes|required',
-            'pay_schedule'=>'sometimes|required',
->>>>>>> e6c2aa0b25001b1586f44b8e0d23ca80bf25c47a
         ];
     }
 
