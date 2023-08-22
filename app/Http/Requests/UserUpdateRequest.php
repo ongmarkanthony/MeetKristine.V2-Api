@@ -44,6 +44,10 @@ class UserUpdateRequest extends FormRequest
             'sl_credits'=>'sometimes|required',
             'vl_credits'=>'sometimes|required',
             'el_credits'=>'sometimes|required',
+            'salary_amount'=>'sometimes|required',
+            'incentives'=>'sometimes|required',
+            'pay_schedule'=>'sometimes|required',
+            'thumbnail'=>'sometimes|required',
         ];
     }
 

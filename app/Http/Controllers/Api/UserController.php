@@ -31,8 +31,8 @@ class UserController extends Controller
             $query->where('gender',$request->gender);
         }
         
-        $query->simplePaginate(10);
-        return UserResource::collection($query->get());
+        
+        return UserResource::collection($query->paginate(15));
     }
 
     /**
@@ -54,7 +54,7 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         //
-        return User::create([
+        $user = User::create([
             'username'=>$request->username,
             'employee_num'=>$request->employee_num,
             'password'=>$request->password,
@@ -83,9 +83,26 @@ class UserController extends Controller
             'sl_credits'=>$request->sl_credits,
             'vl_credits'=>$request->vl_credits,
             'el_credits'=>$request->el_credits,
-
+            'salary_amount'=>$request->salary_amount,
+            'pay_schedule'=>$request->pay_schedule,
+            'incentives'=>$request->incentives,
 
         ]);
+
+
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->file('thumbnail');
+
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $file->storePubliclyAs('public/users', $fileName);
+
+            $user->thumbnail = 'storage/users/ ' . $fileName;
+            $user->save();
+        }
+        return UserResource::make($user);
+
+            
+        
     }
 
     /**
@@ -174,6 +191,15 @@ class UserController extends Controller
         }
         if (isset($request->el_credits)) {
             $user->el_credits = $request->el_credits;
+        }
+        if (isset($request->salary_amount)) {
+            $user->salary_amount = $request->salary_amount;
+        }
+        if (isset($request->incentives)) {
+            $user->incentives = $request->incentives;
+        }
+        if (isset($request->pay_schedule)) {
+            $user->pay_schedule = $request->pay_schedule;
         }
 
         $user->save();

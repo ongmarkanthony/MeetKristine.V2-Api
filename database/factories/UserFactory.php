@@ -44,6 +44,9 @@ class UserFactory extends Factory
             'sl_credits'=>fake()->randomDigit(),
             'vl_credits'=>fake()->randomDigit(),
             'el_credits'=>fake()->randomDigit(),
+            'pay_schedule'=>fake()->randomElement(['monthly','semi-monthly']),
+            'salary_amount'=>fake()->randomNumber(5,true),
+            'incentives'=>fake()->randomNumber(4,true),
             'remember_token' => Str::random(10),
         ];
     }

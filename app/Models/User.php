@@ -44,6 +44,10 @@ class User extends Authenticatable
         'sl_credits',
         'vl_credits',
         'el_credits',
+        'thumbnail',
+        'salary_amount',
+        'incentives',
+        'pay_schedule',
     ];
 
     /**
@@ -70,10 +74,12 @@ class User extends Authenticatable
         return $this->hasMany(LeaveProposal::class);
     }
 
-    public function salaries() {
-        return $this->hasMany(Salary::class);
+    public function salary() {
+        return $this->hasOne(Salary::class);
     }
 
-    
+    public function timeEvent(){
+        return $this->hasOne(TimeEvent::class);
+    }
 
 }

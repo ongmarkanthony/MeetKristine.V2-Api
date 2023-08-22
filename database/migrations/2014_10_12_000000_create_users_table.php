@@ -32,10 +32,10 @@ return new class extends Migration
             $table->string('city');
             $table->string('country');
             $table->string('postalCode');
-            $table->string('sssNumber');
-            $table->string('philNumber');
-            $table->string('tinNumber');
-            $table->string('hdmfNumber');
+            $table->string('sssNumber')->unique();
+            $table->string('philNumber')->unique();
+            $table->string('tinNumber')->unique();
+            $table->string('hdmfNumber')->unique();
             $table->string('bankName');
             $table->string('bankAccount');
             $table->rememberToken();

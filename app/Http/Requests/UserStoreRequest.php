@@ -53,6 +53,10 @@ class UserStoreRequest extends FormRequest
             'sl_credits'=>'required',
             'vl_credits'=>'required',
             'el_credits'=>'required',
+            'salary_amount'=>'required',
+            'incentives'=>'required',
+            'pay_schedule'=>'required',
+            'thumbnail'=>'required',
         ];
     }
 

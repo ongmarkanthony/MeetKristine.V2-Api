@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\LeaveCredit;
 use App\Models\LeaveProposal;
 use App\Models\Salary;
+use App\Models\TimeEvent;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         User::factory(20)
             ->has(LeaveProposal::factory(5))
             ->has(Salary::factory())
+            ->has(TimeEvent::factory())
             ->create();
 
         // Salary::factory(20)->create();
