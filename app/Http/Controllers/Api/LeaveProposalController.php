@@ -42,10 +42,10 @@ class LeaveProposalController extends Controller
     {
         //
         return LeaveProposal::create([
-            'user_id'=>$request->user_id,
-            'leave_type'=>$request->leave_type,
-            'requested_date'=>$request->requested_date,
-            'type'=>$request->type
+            'user_id' => $request->user_id,
+            'leave_type' => $request->leave_type,
+            'requested_date' => $request->requested_date,
+            'type' => $request->type
         ]);
     }
 
@@ -96,7 +96,7 @@ class LeaveProposalController extends Controller
         }
 
         $leaveProposal->save();
-        
+
         return LeaveProposalResource::make($leaveProposal);
     }
 
@@ -112,8 +112,8 @@ class LeaveProposalController extends Controller
         $leaveProposal->delete();
 
         return response()->json([
-            'success'=>true,
-            'message'=>'Successfully deleted'
+            'success' => true,
+            'message' => 'Successfully deleted'
         ]);
     }
 }
