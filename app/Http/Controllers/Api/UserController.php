@@ -111,9 +111,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
         //
+        $user = User::find($id);
+
         return UserResource::make($user);
     }
 
@@ -135,9 +137,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserUpdateRequest $request, User $user)
+    public function update(Request $request, $id)
     {
         //
+        $user = User::find($id);
+
         if (isset($request->username)) {
             $user->username = $request->username;
         }
@@ -213,9 +217,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
         //
+        $user = User::find($id);
         $user->delete();
 
         return response()->json([

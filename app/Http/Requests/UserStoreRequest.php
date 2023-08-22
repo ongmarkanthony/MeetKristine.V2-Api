@@ -56,7 +56,6 @@ class UserStoreRequest extends FormRequest
             'salary_amount'=>'required',
             'incentives'=>'required',
             'pay_schedule'=>'required',
-            'thumbnail'=>'required',
         ];
     }
 

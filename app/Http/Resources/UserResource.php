@@ -37,7 +37,6 @@ class UserResource extends JsonResource
             'salary_amount'=>$this->salary_amount,
             'pay_schedule'=>$this->pay_schedule,
             'incentives'=>$this->incentives,
-            'thumbnail'=>$this->thumbnail,
 
         ];
     }

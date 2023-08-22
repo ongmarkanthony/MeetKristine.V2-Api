@@ -28,9 +28,9 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/login',[AuthController::class, 'login']);
     //Admin
     Route::group(['prefix'=>'users'], function() {
-        Route::get('/',[UserController::class, 'index']);
+        Route::get('/',[UserController::class, 'index'])->middleware(['auth:sanctum','ability:getUsers']);
         Route::get('/{id}',[UserController::class, 'show']);
-        Route::post('/',[UserController::class, 'store']);
+        Route::post('/',[UserController::class, 'store'])->middleware(['auth:sanctum','ability:getUsers']);
         Route::patch('/{id}',[UserController::class, 'update']);
         Route::delete('/{id}',[UserController::class, 'destroy']);
     });

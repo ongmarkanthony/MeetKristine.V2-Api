@@ -47,7 +47,6 @@ class UserUpdateRequest extends FormRequest
             'salary_amount'=>'sometimes|required',
             'incentives'=>'sometimes|required',
             'pay_schedule'=>'sometimes|required',
-            'thumbnail'=>'sometimes|required',
         ];
     }
 

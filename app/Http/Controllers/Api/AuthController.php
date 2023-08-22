@@ -23,9 +23,9 @@ class AuthController extends Controller
             $token=null;
 
             if($user->role == 'admin'){
-                $token = $user->createToken('admin-token',['getUsers','createUsers', 'deleteUsers']);
+                $token = $user->createToken('admin-token',['getUsers', 'createUsers', 'updateUsers', 'deleteUsers']);
             } else {
-                $token = $user->createToken('user-token',['getUsers']);
+                $token = $user->createToken('user-token',['updateUsers']);
             }
 
             return response()->json([
