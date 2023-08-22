@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\LeaveCreditController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\LeaveProposalController;
 use App\Http\Controllers\Api\SalaryController;
 use App\Http\Controllers\Api\TimeEventController;
 use App\Http\Controllers\Api\UserController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'v1'], function () {
-    Route::apiResource('users', UserController::class);
+    Route::post('/login',[AuthController::class, 'login']);
+    //Admin
+    Route::group(['prefix'=>'users'], function() {
+        Route::get('/',[UserController::class, 'index']);
+        Route::get('/{id}',[UserController::class, 'show']);
+        Route::post('/',[UserController::class, 'store']);
+        Route::patch('/{id}',[UserController::class, 'update']);
+        Route::delete('/{id}',[UserController::class, 'destroy']);
+    });
+
     Route::apiResource('leave-proposals', LeaveProposalController::class);
     Route::apiResource('time-events', TimeEventController::class);
     Route::apiResource('salaries', SalaryController::class);

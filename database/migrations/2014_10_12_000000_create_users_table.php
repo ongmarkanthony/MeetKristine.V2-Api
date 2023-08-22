@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('employee_num')->unique();
             $table->string('password');
-            $table->string('role')->default('regular');
+            $table->string('role')->default('user');
             $table->string('email')->unique();
             $table->string('firstName');
             $table->string('lastName');

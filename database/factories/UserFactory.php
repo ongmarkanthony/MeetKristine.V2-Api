@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'username' => fake()->unique()->userName(),
             'employee_num' => 'MK-' . fake()->unique()->randomNumber(4, true),
             'email' => fake()->unique()->firstName . '@meetkristine.com',
-            'password'=>fake()->password(),
+            'password'=>bcrypt('password'),
             'firstName' => fake()->firstName,
             'lastName' => fake()->lastName,
             'jobTitle' => fake()->randomElement(['IT Manager', 'HR Manager', 'Accounting Head', 'Finance Head', 'Marketing', 'Sales Director']),
