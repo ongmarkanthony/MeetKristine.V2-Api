@@ -21,17 +21,17 @@ class UserController extends Controller
         //
         $query = User::query();
 
-        if(isset($request->jobTitle)) {
-            $query->where('jobTitle',$request->jobTitle);
+        if (isset($request->jobTitle)) {
+            $query->where('jobTitle', $request->jobTitle);
         }
-        if(isset($request->department)) {
-            $query->where('department',$request->department);
+        if (isset($request->department)) {
+            $query->where('department', $request->department);
         }
-        if(isset($request->gender)) {
-            $query->where('gender',$request->gender);
+        if (isset($request->gender)) {
+            $query->where('gender', $request->gender);
         }
-        
-        
+
+
         return UserResource::collection($query->paginate(15));
     }
 
@@ -53,39 +53,40 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
+        $validation = $request->validated();
         //
         $user = User::create([
-            'username'=>$request->username,
-            'employee_num'=>$request->employee_num,
-            'password'=>$request->password,
-            'email'=>$request->email,
-            'firstName'=>$request->firstName,
-            'lastName'=>$request->lastName,
-            'jobTitle'=>$request->jobTitle,
-            'department'=>$request->department,
-            'dateHired'=>$request->dateHired,
-            'dateOfBirth'=>$request->dateOfBirth,
-            'gender'=>$request->gender,
-            'address1'=>$request->address1,
-            'address2'=>$request->address2,
-            'city'=>$request->city,
-            'country'=>$request->country,
-            'postalCode'=>$request->postalCode,
-            'sssNumber'=>$request->sssNumber,
-            'philNumber'=>$request->philNumber,
-            'tinNumber'=>$request->country,
-            'hdmfNumber'=>$request->hdmfNumber,
-            'country'=>$request->country,
-            'bankName'=>$request->bankName,
-            'bankAccount'=>$request->bankAccount,
-            'country'=>$request->country,
-            'accrual'=>$request->accrual,
-            'sl_credits'=>$request->sl_credits,
-            'vl_credits'=>$request->vl_credits,
-            'el_credits'=>$request->el_credits,
-            'salary_amount'=>$request->salary_amount,
-            'pay_schedule'=>$request->pay_schedule,
-            'incentives'=>$request->incentives,
+            'username' => $request->username,
+            'employee_num' => $request->employee_num,
+            'password' => $request->password,
+            'email' => $request->email,
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
+            'jobTitle' => $request->jobTitle,
+            'department' => $request->department,
+            'dateHired' => $request->dateHired,
+            'dateOfBirth' => $request->dateOfBirth,
+            'gender' => $request->gender,
+            'address1' => $request->address1,
+            'address2' => $request->address2,
+            'city' => $request->city,
+            'country' => $request->country,
+            'postalCode' => $request->postalCode,
+            'sssNumber' => $request->sssNumber,
+            'philNumber' => $request->philNumber,
+            'tinNumber' => $request->country,
+            'hdmfNumber' => $request->hdmfNumber,
+            'country' => $request->country,
+            'bankName' => $request->bankName,
+            'bankAccount' => $request->bankAccount,
+            'country' => $request->country,
+            'accrual' => $request->accrual,
+            'sl_credits' => $request->sl_credits,
+            'vl_credits' => $request->vl_credits,
+            'el_credits' => $request->el_credits,
+            'salary_amount' => $request->salary_amount,
+            'pay_schedule' => $request->pay_schedule,
+            'incentives' => $request->incentives,
 
         ]);
 
@@ -100,9 +101,6 @@ class UserController extends Controller
             $user->save();
         }
         return UserResource::make($user);
-
-            
-        
     }
 
     /**
@@ -219,9 +217,8 @@ class UserController extends Controller
         $user->delete();
 
         return response()->json([
-            'success'=>true,
-            'message'=>'Successfully deleted',
+            'success' => true,
+            'message' => 'Successfully deleted',
         ]);
-        
     }
 }
