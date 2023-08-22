@@ -37,5 +37,4 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::apiResource('leave-proposals', LeaveProposalController::class);
     Route::apiResource('time-events', TimeEventController::class);
-    Route::apiResource('salaries', SalaryController::class);
 });
